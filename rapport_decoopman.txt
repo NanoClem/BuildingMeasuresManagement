@@ -1,0 +1,20 @@
+# Compte rendu DECOOPMAN / DUPOUY
+
+
+1. Dans le pattern de conception MVC :
+
+    - "gestion_batiment_maquette.html" représente la View et les différents éléments récurrents
+      dans l'application. Il s'agit d'un patron, permettant d'éviter d'écrire plusieurs fois les mêmes pages.
+      Elle affichera également les données issues du Model (ici notre BDD).
+
+    - "gestion_batiment.php" constitue le Controller. Il permet de géréer les accès aux differentes pages
+      par méthode GET (un indice).
+
+
+2.
+
+
+
+3. La navigation entre les pages du site est réalisée par méthode GET. Un identifiant de page est transmis afin de pouvoir
+   savoir quel numéro de page l'utilisateur a demandé.
+  GET['page'] nous donne le numéro de page, puis le fichier php se charge d'orienter l'affichage.
