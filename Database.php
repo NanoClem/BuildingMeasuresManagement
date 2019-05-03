@@ -4,7 +4,7 @@
 
   class Database {
 
-    public $PDO_BDD;
+    private $PDO_BDD;
 
 
     /**
@@ -45,9 +45,10 @@
 
     /**
      * SELECTIONNE LES DONNEES ISSUES DE LA REQUETE
+     * @param $sql : requete sql de selection
      * @return : renvoie le resultat sous forme de tableau associatif
      */
-    public function queryDB($sql) {
+    public function select($sql) {
       try {
         $query = $this->PDO_BDD->prepare($sql);   // preparation de la requete (contre les injections)
         $query->execute();                        // execution de la requete
@@ -61,6 +62,22 @@
 
 
     /**
+     * INSERTION DE DONNEES DANS LA BDD
+     * @param $sql  : requete sql d'insertion
+     * @param $data : tableau associatif des donnees a inserer
+     */
+    public function insert($sql, $data) {
+      try {
+        $query = $this->PDO_BDD->prepare($sql);   // preparation de la requete (contre les injections)
+        $query->execute($data);                   // execution de la requete
+      }
+      catch(Exception $e) {
+        die('<div style="font-weight:bold; color:red">Erreur : '.$e->getMessage().'</div>');
+      }
+    }
+
+
+    /**
      * FERMER LA CONNEXION
      */
     public function disconnect()
@@ -70,13 +87,13 @@
 
 
     /**
-     * AFFICHE LES CAPTEURS PRESENTS DANS UNE ZONE
-     * @param area : zone dont on recherche les capteurs
+     * AFFICHE UNE REQUETE SQL SOUS FORME DE TABLEAU HTML
+     * @param sql : tableau associatif resultant d'une precedente requete
      */
     public function printQuery($sql) {
 
       // EXECUTION DE LA REQUETE
-      $dataTab = $this->queryDB($sql);
+      $dataTab = $this->select($sql);
 
       // AFFICHAGE DES RESULTATS
       echo '<table style="text-align:left; border-collapse:separate;  border-spacing:8px 8px;">
@@ -91,12 +108,6 @@
         }
       echo '</table>';
     }
-
-
-    /**
-     * AFFICHE LES ACTIONNEURS DANS UNE ZONE
-     *
-     */
 
 
   }

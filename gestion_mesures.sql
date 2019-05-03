@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le :  jeu. 11 avr. 2019 à 09:42
+-- Généré le :  ven. 03 mai 2019 à 09:32
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.2.11
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `gestion_mesures`
 --
+CREATE DATABASE IF NOT EXISTS `gestion_mesures` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `gestion_mesures`;
 
 -- --------------------------------------------------------
 
@@ -296,7 +298,7 @@ ALTER TABLE `zone`
 -- AUTO_INCREMENT pour la table `actionneur`
 --
 ALTER TABLE `actionneur`
-  MODIFY `id_actionneur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_actionneur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT pour la table `capteur`
